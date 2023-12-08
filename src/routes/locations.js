@@ -6,13 +6,14 @@ import {
   DELETE_LOCATION,
   UPDATE_LOCATION,
 } from "../controllers/locations.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.post("/locations", ADD_LOCATION);
+router.post("/locations", auth, ADD_LOCATION);
 router.get("/locations", GET_LOCATIONS);
 router.get("/locations/:id", GET_LOCATION_BY_ID);
-router.put("/locations/:id", UPDATE_LOCATION);
-router.delete("/locations/:id", DELETE_LOCATION);
+router.put("/locations/:id", auth, UPDATE_LOCATION);
+router.delete("/locations/:id", auth, DELETE_LOCATION);
 
 export default router;
