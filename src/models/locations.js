@@ -6,7 +6,7 @@ const locationSchema = mongoose.Schema({
   longitude: { type: String, required: true },
   location_photo_url: { type: String, required: true },
   description: { type: String, required: true },
-  location_id: { type: String, required: true },
+  location_id: { type: String },
 });
 
 export default mongoose.model("Location", locationSchema);

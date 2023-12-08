@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import LocationModel from "../models/locations.js";
 
 const ADD_LOCATION = async (req, res) => {
