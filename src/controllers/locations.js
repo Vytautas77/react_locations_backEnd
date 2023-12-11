@@ -9,6 +9,7 @@ const ADD_LOCATION = async (req, res) => {
       location_photo_url: req.body.location_photo_url,
       description: req.body.description,
       location_id: req.body.location_id,
+      owner_id: req.body.userId,
     });
     const response = await location.save();
 
@@ -21,7 +22,7 @@ const ADD_LOCATION = async (req, res) => {
 
 const GET_LOCATIONS = async (req, res) => {
   try {
-    const locations = await LocationModel.find();
+    const locations = await LocationModel.find({ owner_id: req.body.userId });
     return res.status(200).json({ locations });
   } catch (err) {
     console.error("ERROR: ", err);
