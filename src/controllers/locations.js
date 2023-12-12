@@ -60,16 +60,8 @@ const UPDATE_LOCATION = async (req, res) => {
 
 const DELETE_LOCATION = async (req, res) => {
   try {
-    const locations = await LocationModel.deleteOne({ _id: req.params.id });
-
-    // Check if the deletion was successful
-    if (locations.deletedCount === 1) {
-      return res
-        .status(200)
-        .json({ response: "Location deleted successfully" });
-    } else {
-      return res.status(404).json({ response: "Location not found" });
-    }
+    const response = await LocationModel.deleteOne({ _id: req.params.id });
+    return res.status(200).json({ response });
   } catch (err) {
     console.error("ERROR: ", err);
     res.status(500).json({ response: "Something went wrong!" });
